@@ -18,13 +18,24 @@
           placeholder="Количество"
           min="0"
           max="20"
+          v-model="product.count"
         ></BFormInput>
       </BCol>
     </BRow>
 
     <div class="group-button">
-      <BButton variant="danger" @click="addToBasket">В корзину</BButton>
-      <BButton variant="success">В избранное</BButton>
+      <BButton
+        :class="{ 'delete-button': product.inCart }"
+        variant="danger"
+        @click="addToCart"
+        >{{ getCartButtonText }}</BButton
+      >
+      <BButton
+        :class="{ 'favorite-button': product.favorite }"
+        variant="success"
+        @click="addToFavorite"
+        >{{ getFavoriteButtonText }}</BButton
+      >
     </div>
   </BCard>
 </template>
@@ -41,9 +52,31 @@ export default {
   },
 
   methods: {
-    ...mapActions("products", ["addProductToBasket"]),
-    addToBasket() {
-      this.addProductToBasket(this.product.id);
+    ...mapActions("products", [
+      "addProductToCart",
+      "addProductToFavorite",
+      "removeProductFromCart",
+    ]),
+    addToCart() {
+      if (this.product.inCart) {
+        this.removeProductFromCart(this.product);
+      } else {
+        this.addProductToCart(this.product);
+      }
+    },
+
+    addToFavorite() {
+      this.addProductToFavorite(this.product);
+    },
+  },
+
+  computed: {
+    getFavoriteButtonText() {
+      return this.product.favorite ? "Удалить из избранного" : "В избранное";
+    },
+
+    getCartButtonText() {
+      return this.product.inCart ? "Удалить из корзины" : "В корзину";
     },
   },
 };
@@ -54,5 +87,10 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-top: auto;
+}
+
+.delete-button,
+.favorite-button {
+  font-size: 14px;
 }
 </style>

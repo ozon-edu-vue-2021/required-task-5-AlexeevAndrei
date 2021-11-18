@@ -8,7 +8,7 @@
   </BContainer>
 </template>
 <script>
-import ProductItem from "./ProductItem.vue";
+import ProductItem from "../components/ProductItem.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "ProductList",

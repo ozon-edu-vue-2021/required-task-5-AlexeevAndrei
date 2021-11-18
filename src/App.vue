@@ -3,29 +3,22 @@
     <div class="nav-container">
       <b-navbar toggleable="lg" type="dark" variant="primary">
         <div class="wrapper">
-          <router-link to="/">
-            <b-navbar-brand>Products</b-navbar-brand>
+          <router-link :to="routerLinks.root">
+            <b-navbar-brand>Каталог</b-navbar-brand>
           </router-link>
           <div>
-            <router-link to="/bascket"
+            <router-link :to="routerLinks.cart"
               ><BButton class="basket-button" variant="danger"
                 >Корзина</BButton
               ></router-link
             >
-
-            <BButton variant="success">Избранное</BButton>
+            <router-link :to="routerLinks.favorite">
+              <BButton variant="success">Избранное</BButton>
+            </router-link>
           </div>
         </div>
       </b-navbar>
     </div>
-    <!-- <ul>
-      <li>
-        <router-link to="/">Products</router-link>
-      </li>
-      <li>
-        <router-link to="/bascket">Bascket</router-link>
-      </li>
-    </ul> -->
     <router-view />
   </div>
 </template>
@@ -35,6 +28,13 @@ import { mapActions } from "vuex";
 
 export default {
   name: "App",
+  data: () => ({
+    routerLinks: {
+      root: "/",
+      cart: "/cart",
+      favorite: "/favorite",
+    },
+  }),
   created() {
     this.fetchProducts();
   },

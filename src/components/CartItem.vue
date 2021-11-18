@@ -14,6 +14,7 @@
             placeholder="Количество"
             min="0"
             max="20"
+            v-model="product.count"
           ></BFormInput>
           <BButton
             class="remove-button"
@@ -30,7 +31,7 @@
 <script>
 import { mapActions } from "vuex";
 export default {
-  name: "BasketItem",
+  name: "CartItem",
   props: {
     product: {
       type: Object,
@@ -39,9 +40,9 @@ export default {
   },
 
   methods: {
-    ...mapActions("products", ["removeProductFromBasket"]),
+    ...mapActions("products", ["removeProductFromCart"]),
     removeBasketItem() {
-      this.removeProductFromBasket(this.product.id);
+      this.removeProductFromCart(this.product);
     },
   },
 };

@@ -1,21 +1,29 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import ProductList from "../components/ProductList.vue";
-import Basket from "../components/Basket.vue";
+import ProductList from "../views/ProductList.vue";
+import Cart from "../views/Cart.vue";
+import Favorite from "../views/Favorite.vue";
+
+const routerLinks = { root: "/", cart: "/cart", favorite: "/favorite" };
 
 Vue.use(Router);
 
 export default new Router({
   mode: "history",
+
   routes: [
     {
-      path: "/",
+      path: routerLinks.root,
       component: ProductList,
     },
     {
-      path: "/bascket",
-      component: Basket,
+      path: routerLinks.cart,
+      component: Cart,
+    },
+    {
+      path: routerLinks.favorite,
+      component: Favorite,
     },
   ],
 });
