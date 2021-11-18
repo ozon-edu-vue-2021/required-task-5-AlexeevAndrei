@@ -25,15 +25,12 @@
 
 <script>
 import { mapActions } from "vuex";
+import { routerLinks } from "./router/index";
 
 export default {
   name: "App",
   data: () => ({
-    routerLinks: {
-      root: "/",
-      cart: "/cart",
-      favorite: "/favorite",
-    },
+    routerLinks: routerLinks,
   }),
   created() {
     this.fetchProducts();

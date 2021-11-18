@@ -19,7 +19,7 @@
           min="0"
           max="20"
           v-model="product.count"
-        ></BFormInput>
+        />
       </BCol>
     </BRow>
 
@@ -33,7 +33,7 @@
       <BButton
         :class="{ 'favorite-button': product.favorite }"
         variant="success"
-        @click="addToFavorite"
+        @click="addProductToFavorite(product)"
         >{{ getFavoriteButtonText }}</BButton
       >
     </div>
@@ -63,10 +63,6 @@ export default {
       } else {
         this.addProductToCart(this.product);
       }
-    },
-
-    addToFavorite() {
-      this.addProductToFavorite(this.product);
     },
   },
 

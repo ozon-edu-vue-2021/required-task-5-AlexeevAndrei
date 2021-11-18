@@ -5,7 +5,7 @@ import ProductList from "../views/ProductList.vue";
 import Cart from "../views/Cart.vue";
 import Favorite from "../views/Favorite.vue";
 
-const routerLinks = { root: "/", cart: "/cart", favorite: "/favorite" };
+export const routerLinks = { root: "/", cart: "/cart", favorite: "/favorite" };
 
 Vue.use(Router);
 

@@ -2,7 +2,7 @@
   <BCard no-body class="overflow-hidden mb-4" style="max-width: 460px">
     <BRow no-gutters>
       <BCol md="6">
-        <BCardImg :src="product.image" alt="Image" class="rounded-0"></BCardImg>
+        <BCardImg :src="product.image" alt="Image" class="rounded-0" />
       </BCol>
       <BCol md="6">
         <BCardBody :title="product.dish">
@@ -15,11 +15,11 @@
             min="0"
             max="20"
             v-model="product.count"
-          ></BFormInput>
+          />
           <BButton
             class="remove-button"
             variant="danger"
-            @click="removeBasketItem"
+            @click="removeProductFromCart(product)"
             >Удалить из корзины
           </BButton>
         </BCardBody>
@@ -41,9 +41,6 @@ export default {
 
   methods: {
     ...mapActions("products", ["removeProductFromCart"]),
-    removeBasketItem() {
-      this.removeProductFromCart(this.product);
-    },
   },
 };
 </script>

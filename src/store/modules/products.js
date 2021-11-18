@@ -47,7 +47,7 @@ const productsStore = {
 
   mutations: {
     [SET_PRODUCTS](state, products) {
-      let serializeProduct = products.map((product) => ({
+      state.products = products.map((product) => ({
         ...product,
         price: Math.floor(Math.random() * 1000) + 1,
         count: 1,
@@ -57,7 +57,6 @@ const productsStore = {
           IMAGES[Math.floor(Math.random() * 12)]
         }.webp`),
       }));
-      state.products = serializeProduct;
     },
 
     [ADD_TO_CART](state, product) {
